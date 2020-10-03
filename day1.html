@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>day1</title>
+	<link rel="stylesheet" type="text/css" href="./day1.css">
+</head>
+<body>
+	<div class="tens">
+		<div data-ten="65" class="ten">
+			<kbd>A</kbd>
+			<span class="mau">mua</span>
+		</div>
+		<div data-ten="83" class="ten">
+			<kbd>B</kbd>
+			<span class="mau">mua</span>
+		</div>
+		<div  data-ten="68" class="ten">
+			<kbd>C</kbd>
+			<span class="mau">mua</span>
+		</div>
+		<div data-ten="70" class="ten">
+			<kbd>D</kbd>
+			<span class="mau">mua</span>
+		</div>
+		<div  data-ten="71" class="ten">
+			<kbd>E</kbd>
+			<span class="mau">mua</span>
+		</div>
+	</div>
+
+	<audio data-ten="65" src="./sound/ding.wav"></audio>
+	<audio data-ten="83" src="./sound/notify.wav"></audio>
+	<audio data-ten="68" src="./sound/ringout.wav"></audio>
+	<audio data-ten="70" src="./sound/tada.wav"></audio>
+	<audio data-ten="71" src="./sound/Windows Battery Critical.wav"></audio>
+
+<script>
+	window.addEventListener('keydown',function(e)
+	{
+		const audio=document.querySelector(`audio[data-ten="${e.keyCode}"]`);
+		const ten=document.querySelector(`.ten[data-ten="${e.keyCode}"]`);
+		if (!audio) return;
+		audio.currentTime=0;
+		audio.play();
+		ten.classList.add('choi');
+	});
+
+	// function removehieuung (e) 
+	// {
+	// 	// if(e.prototypeName !== transform) return;
+	// 	this.classList.remove('choi');
+	// }
+	function aaa(){
+		this.classList.remove('choi');
+	}
+	const tens=document.querySelectorAll('.ten');
+	//tens.forEach(ten=>ten.addEventListener('transitionend',removehieuung ));
+	for(let i=0;i<tens.length;i++)
+	{
+		tens[i].addEventListener('transitionend',aaa);
+	}
+</script>
+</body>
+</html>

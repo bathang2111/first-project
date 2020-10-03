@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>sadas</title>
+    <link rel="stylesheet" type="text/css" href="./test.css">;
+</head>
+
+<body>
+    <div class="name">
+        <div class="key">
+            <kbd class="65">A</kbd><br />
+            <span class="sound">tinh</span>
+        </div>
+        <div class="key">
+            <kbd class="83">S</kbd><br />
+            <span class="sound">tinh</span>
+        </div>
+        <div class="key">
+            <kbd class="68">D</kbd><br />
+            <span class="sound">tinh</span>
+        </div>
+        <div class="key">
+            <kbd class="70">F</kbd><br />
+            <span class="sound">tinh</span>
+        </div>
+        <div class="key">
+            <kbd class="71">G</kbd><br />
+            <span class="sound">tinh</span>
+        </div>
+        <div class="key">
+            <kbd class="72">H</kbd><br />
+            <span class="sound">tinh</span>
+        </div>
+    </div>
+    <audio class="65" src="./sound/ding.wav"></audio>
+    <audio class="83" src="./sound/notify.wav"></audio>
+    <audio class="68" src="./sound/ringout.wav"></audio>
+    <audio class="70" src="./sound/tada.wav"></audio>
+    <audio class="71" src="./sound/Windows Battery Critical.wav"></audio>
+    <audio class="72" src="./sound/Windows Balloon.wav"></audio>
+    <script>
+    function choi(e) {
+        const audio = document.querySelector(`audio[class="${e.keyCode}"]`);
+        if (!audio) return;
+        audio.currentTime = 0;
+        audio.play();
+        const kbd = document.querySelector(`kbd[class="${e.keyCode}"]`);
+        kbd.classList.add('playing');
+        //kbd.classList.remove('playing');
+    }
+    window.addEventListener('keydown', choi);
+
+    const keys = document.querySelectorAll('kbd');
+
+    const aaa=()=> {
+        for (let i = 0; i < keys.length; i++) {
+            keys[i].classList.remove('playing');
+        }
+
+    }
+    keys.forEach(keys=>setInterval(aaa,1000));
+    </script>
+</body>
+
+</html>
